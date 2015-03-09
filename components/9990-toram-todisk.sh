@@ -63,6 +63,9 @@ copy_live_to ()
 	log_begin_msg "mount -t ${fstype} ${mount_options} ${dev} ${copyto}"
 	mount -t "${fstype}" ${mount_options} "${dev}" "${copyto}"
 
+	local extension
+	extension="$(echo "${FETCH}" | sed 's/\(.*\)\.\(.*\)/\2/')"
+
 	if [ "${extension}" = "tgz" ]
 	then
 		cd "${copyto}"
